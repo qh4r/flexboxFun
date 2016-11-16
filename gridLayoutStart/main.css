@@ -18,28 +18,118 @@ body {
     font-size: 1.2em;
     padding: 1em;
     text-align: center;
+    position: relative;
+}
+
+.grid-item > * {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.red {
+    background-color: #ff5463;
 }
 
 .grid-item-01 {
-    background-color: #ff5463;
     grid-column-start: 0;
     grid-column-end: 1;
     grid-row-start: 0;
     grid-row-end: 1;
 }
 
-.grid-item-02 {
+.green {
     background-color: #9cff79;
+}
+
+.grid-item-02 {
     grid-column-start: 2;
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 4;
 }
 
-.grid-item-03 {
+.purple {
     background-color: #b869ff;
+}
+
+.grid-item-03 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
+}
+
+.auto-grid-container {
+    border: solid 2px #f4e537;
+    display: inline-grid;
+    grid-template-columns: 30rem 20rem 40rem; /* da sie aliasowac [nazwa] */
+    grid-template-rows: 20rem 20rem;
+    /*grid: 30rem 20rem 40rem / 20rem 20rem; !* rownowaznik !**/
+    grid-auto-flow: column; /* bedzie szki kolejno kolumnami a nie wierszami*/
+}
+
+.auto1 {
+    grid-row: 1 / 2;
+    grid-column: 3/3;
+    /* da sie alignemnty, tak samo w rodzicu z items */
+    align-self: baseline;
+    justify-self: center;
+}
+
+.auto2 {
+    grid-row: 2/2; /* start end */
+    grid-column: 1/2;
+    /* grid-area laczy colummn i row */
+}
+
+.auto-grid-container2 {
+    border: solid 2px #f4e537;
+    display: inline-grid;
+    grid-template-columns: repeat(2, 10rem 20rem);
+    grid-template-rows: 10rem repeat(3, 5rem 4rem);
+    grid-auto-flow: column;
+}
+
+.img {
+    height: auto;
+    width: 100%;
+}
+
+.media-item-title {
+    grid-area: title;
+}
+
+.media-item-thumb {
+    grid-area: thumb;
+}
+
+.media-item-content {
+    grid-area: content;
+}
+
+.media-container {
+    display: grid;
+    grid: auto 1em 2em / auto 1em 1fr;
+
+    /* (1)FR - Fraction values are new units applicable to the grid-rows and
+    grid-columns properties... The distribution of fractional space occurs
+    after all or content-based row and column sizes have reached their maximum.
+    The total size of the rows or columns is then subtracted from the available
+    space and the remainder is divided proportionately among the fractional rows
+    and columns. */
+
+    /* fr funkcjonuje jak gwiazdka w xamlu */
+
+    /* auto bierze tak malo jak to mozliwe
+        a fr bierze tyle ile sie da
+
+         czyli jak w xamlu */
+
+    grid-template-areas: 'title title title'
+                        '. . .'
+                        "thumb . content";
+    /* kropka oznacza pusta kolumne */
+
+    /* generalnie jak sie wprowadzi np zla nazwe area to dzieja sie cuda */
 }
