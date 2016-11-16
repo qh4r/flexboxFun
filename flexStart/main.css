@@ -1,0 +1,166 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial, sans-serif;
+}
+
+.flex-container:not(.other) {
+    width: 60%;
+    display: flex;
+    border: solid 2px #87b7ff;
+    flex-direction: row; /* od lewej do prawej - od flex start do flex end */
+    /*flex-direction: row-reverse; !* od prawej do lewej *!*/
+    /*flex-direction: column-reverse; !* z dolu do gory *!*/
+    flex-wrap: wrap;
+    /* bez wlaczonego wrapa elementy po osiagnieciu maxymul
+        glownej osi zaczna overflow*/
+
+    /*flex-flow: - łączy flex dierection i wrap (przyjmuje 2 argmunety)*/
+    flex-grow: 2;
+    flex-shrink: 1;
+
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.flex-container.other {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* align wzdloz glownej osi */
+    align-items: flex-end; /* align wzdloz osi cross*/
+    /* baseline wyrownuje baseline textu elementow*/
+    height: 30em;
+}
+
+.other > .flex-item {
+    /*flex: 1 1 auto*/ /*powoduje rowny rozklad*/
+    flex: 0 0 auto; /* restart do domyslnych */
+}
+
+.flex-item {
+    /*width: 10%; !* NIE MOZNA ustawienie zniszczy flex *!*/
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 1em;
+    text-align: center;
+    background-color: #ffa450;
+    /*flex-shrink: 5;*/
+    /*flex-grow: 1;*/
+}
+
+/* order zmienia kolejnosc wyswietlania ale selectory css dzialaja na drzewie html i pozostaja bez zmian
+
+element ostatni pozostanie fioletowy mimo ze sa elementy wyswietlane po nim (przez order)*/
+:not(.other) > .flex-item:first-child {
+    background-color: #ff5463;
+    order: 3;
+    flex-grow: 3; /* grow i shrink dziala na elmenty w 1 rzedzie */
+    flex-shrink: 3;
+    flex-basis: 10em; /* dodatkowe 10 % na start niezalezne od grow */
+}
+
+/* flex grow shrink i basis dzialaja na elementy w 1 rzedzie */
+
+/* w skrocie flex: flex-growth flex-shrink flex-basis */
+
+.flex-item:nth-child(2) {
+    background-color: #9cff79;
+    align-self: center;
+}
+
+:not(.other) > .flex-item:nth-child(2) {
+    order: 1;
+    flex-grow: 5;
+    flex-shrink: 0;
+}
+
+.flex-item:nth-child(3) {
+    background-color: #87b7ff;
+}
+
+:not(.other) > .flex-item:nth-child(3) {
+    background-color: #87b7ff;
+    order: 1;
+}
+
+:not(.other) > .flex-item:nth-child(4) {
+    background-color: #87b7ff;
+    order: -1;
+}
+
+.flex-item:last-child {
+    background-color: #b869ff;
+}
+
+:not(.other) > .flex-item:last-child {
+    order: 0; /* domyslnie kazdy element ma 0 */
+    flex-shrink: 0;
+}
+
+.flex-container2 {
+    display: flex;
+    text-align: center;
+}
+
+.flex-item2:nth-child(2){
+    flex: 0 0 50%; /* pol calosci  stale*/
+    /* alterntywnie flex: 2 */
+    background-color: red;
+}
+
+.flex-item2 {
+    flex: 1;
+    background-color: greenyellow;
+}
+
+.container {
+    background-color: #000077;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 20px 0;
+    height: 300px;
+}
+
+.container > * {
+    flex: 1;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    background-color: red;
+}
+
+.left {
+    background-color: #9cff79;
+    flex: 1;
+}
+
+.center {
+    background-color: #ffa450;
+    flex: 3;
+}
+
+.right {
+    background-color: #b869ff;
+    flex: 1;
+}
+
+.footer {
+    background-color: blue;
+}
+
+@media screen and (max-width: 500px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .content > * {
+        flex: 1;
+    }
+}
