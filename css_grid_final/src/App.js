@@ -56,8 +56,26 @@ class App extends Component {
           <div name="side-r" className="box wide high">
             right
           </div>
-          <div name="footer" className="box wide high">
+          <div name="footer" className="box wide">
             foot
+          </div>
+        </div>
+        {/*span jesli jest w ostatniej kolumnie a wyszedl by w kolejny rzad przenoszony jest caly do nowego rzedu*/}
+        <div className="grid purple">
+          <div className="box wide orange">
+
+          </div>
+          <div className="box wide span-2">
+
+          </div>
+          <div className="box wide span-2 pink">
+
+          </div>
+          <div className="box wide orange">
+
+          </div>
+          <div className="box wide span-2">
+
           </div>
         </div>
       </div>

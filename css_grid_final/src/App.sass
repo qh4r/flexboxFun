@@ -17,12 +17,20 @@
 
     // columns / rows
     &.red
+      overflow: hidden
       background-color: #f0a8a4
       // auto pozwala automatycznie po rowno rozdzielac przestrzen dla wszystkich rzedow / kolumn area
-      //grid-template: auto / 15% 4fr 1fr 1fr
-      grid-template: 1fr 4fr 10% / 15% 4fr 1fr 1fr
-      grid-template-areas: "side-l head head ." "side-l main . side-r" "foot foot foot foot"
-    // . oznacza pusta komorke
+      grid-template: auto / 15% 4fr 1fr 1fr
+      grid-template-areas: "side-l head head ." "side-l main . side-r" "side-l main . side-r"  "foot foot foot foot"
+    // . oznacza pusta komorke\
+
+    &.purple
+      background-color: #dba7f0
+      grid-template-columns: 20% 1fr 1fr 20%
+      grid-template-rows: 20% 20% 1fr
+      align-items: stretch
+      grid-gap: 10px / 10px
+
     .box
       // margin auto powoduje wysrodkowanie elementow, nie jest potrzebny nawet align
       margin: auto
@@ -71,3 +79,7 @@
       &[name=footer]
         grid-area: foot
         background-color: #ece8f0
+
+      &[name=main]
+        grid-area: main
+        background-color: #91ccf0
