@@ -1,0 +1,73 @@
+.app
+  margin: 0 auto
+  max-width: 1200px
+
+  .grid
+    display: grid
+    height: 100vh
+
+    &.green
+      background-color: #bdffe9
+      grid-template: 25% 25% 25% 25% / 20% 1fr 20%
+
+    &.blue
+      background-color: #b6d4ff
+      grid-gap: 10px / 10px
+      grid-template: 20% 20% 1fr 10% / 25% 1fr 2fr
+
+    // columns / rows
+    &.red
+      background-color: #f0a8a4
+      // auto pozwala automatycznie po rowno rozdzielac przestrzen dla wszystkich rzedow / kolumn area
+      //grid-template: auto / 15% 4fr 1fr 1fr
+      grid-template: 1fr 4fr 10% / 15% 4fr 1fr 1fr
+      grid-template-areas: "side-l head head ." "side-l main . side-r" "foot foot foot foot"
+    // . oznacza pusta komorke
+    .box
+      // margin auto powoduje wysrodkowanie elementow, nie jest potrzebny nawet align
+      margin: auto
+      height: 100px
+      line-height: 100px
+      text-align: center
+      width: 100px
+      background-color: #f0e873
+      &.wide
+        width: 100%
+      &.text-red
+        color: #f07979
+
+      &.span-2
+        grid-column: span 2
+        grid-row: span 2
+      &.high
+        height: 400px
+        line-height: 400px
+
+      &.pink
+        background-color: #f09cdd
+
+      &.orange
+        background-color: #f09773
+
+      &.blue-1
+        grid-area: 2 / 2 / 2 span / span 3
+
+      //  row start / column start / row end /column end
+      &.blue-2
+        grid-area: 3 / 3 / 5 / 4
+
+      &[name=header]
+        grid-area: head
+
+      &[name=side-l]
+        grid-area: side-l
+        background-color: #f0b6ce
+        height: 100%
+
+      &[name=side-r]
+        grid-area: side-r
+        background-color: #a8ffe0
+
+      &[name=footer]
+        grid-area: foot
+        background-color: #ece8f0
