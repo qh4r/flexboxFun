@@ -1,7 +1,12 @@
+
 import React, {Component} from 'react';
 
 import './App.sass';
 import stylesModule from './Module.css';
+
+function compute(a : number ,b : number) {
+  return a * b;
+}
 
 class App extends Component {
   render() {
@@ -9,7 +14,7 @@ class App extends Component {
       <div className="app">
         <div className="grid green">
           <div className="box">
-
+            {compute(2,"5")}
           </div>
           <div className="box">
 
