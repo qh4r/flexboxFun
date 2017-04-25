@@ -1,4 +1,4 @@
-
+// @flow
 import React, {Component} from 'react';
 
 import './App.sass';
@@ -14,7 +14,7 @@ class App extends Component {
       <div className="app">
         <div className="grid green">
           <div className="box">
-            {compute(2,"5")}
+            {compute(2,5)}
           </div>
           <div className="box">
 
